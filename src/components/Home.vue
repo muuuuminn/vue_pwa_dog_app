@@ -24,7 +24,7 @@
 </template>
 
 <script>
-import firebase from '../configFirebase.js'
+import db from '../db.js'
 export default {
     data(){
         return{
@@ -32,7 +32,7 @@ export default {
         }
     },
     mounted(){
-    firebase.db.collection('dogs').orderBy('created_at').onSnapshot((snapShot) => {
+    db.collection('dogs').orderBy('created_at', 'desc').onSnapshot((snapShot) => {
             this.dogs=[];
             snapShot.forEach((dog)  => {
                 this.dogs.push({

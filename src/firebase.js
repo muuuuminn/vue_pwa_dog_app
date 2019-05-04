@@ -1,6 +1,4 @@
-import firebase from 'firebase/app';
-import 'firebase/firestore';
-import 'firebase/messaging';
+import firebase from 'firebase';
 
 const config = {
   apiKey: "AIzaSyDwrQUGSruZ5M26ytsuNxzeaGHVTuNBYjk",
@@ -14,8 +12,4 @@ const config = {
 
 firebase.initializeApp(config);
 
-let db = firebase.firestore();
-
-export default {
-  db
-};
+export default firebase;

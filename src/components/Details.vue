@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import firebase from '../configFirebase.js'
+import db from '../db.js'
 export default {
     props:{
         dogProp:{
@@ -32,7 +32,7 @@ export default {
             this.dog = this.dogProp
         }else{
             const id = this.$route.params.id
-            firebase.db.doc(`dogs/${id}`).get()
+            db.doc(`dogs/${id}`).get()
             .then((doc) => {
                 if (doc.exists) {
                     this.dog = doc.data();

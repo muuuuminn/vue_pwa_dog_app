@@ -1,12 +1,11 @@
-import firebase from '../../configFirebase';
+import db from '../../db';
 import router from '../../router';
 
 export default (url, comment, author) => {
   let d = new Date();
   let days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
-  console.log(firebase.db);
 
-  firebase.db.collection('dogs').add(
+  db.collection('dogs').add(
     {
       url,
       comment,
@@ -14,6 +13,6 @@ export default (url, comment, author) => {
       created_at: new Date().getTime()
     }
   ).then(
-    router.go(-1)
+    router.push({ name: 'home' })
   )
 }
